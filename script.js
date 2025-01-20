@@ -5,9 +5,10 @@ const nextBtn = document.getElementById("nextBtn");
 const pageInfo = document.getElementById("pageInfo");
 const errorSection = document.getElementById("error-section");
 const themeToggle = document.getElementById("themeToggle");
-const recordsPerPage = 5;
+const recordsPerPageDropdown = document.getElementById("recordsPerPage");
 let currentPage = 1;
 let projects = [];
+let recordsPerPage = 5;
 
 const fetchProjectsPage = async (page) => {
   try {
@@ -91,5 +92,26 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
+const initializeDropdown = () => {
+  const totalRecords = projects.length;
+  const dropdownFragment = document.createDocumentFragment();
+  for (let i = 5; i <= totalRecords; i += 5) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = i;
+    dropdownFragment.appendChild(option);
+  }
+  recordsPerPageDropdown.appendChild(dropdownFragment);
+};
+
+recordsPerPageDropdown.addEventListener("change", (event) => {
+  recordsPerPage = parseInt(event.target.value, 10);
+  currentPage = 1;
+  loadPage(currentPage);
+});
+
+fetchProjectsPage(1).then(() => {
+  initializeDropdown();
+  loadPage(currentPage);
+});
 applyTheme();
-loadPage(1);
