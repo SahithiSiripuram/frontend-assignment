@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Highly Rated Kickstarter Projects</title>
+</head>
+<body>
+  <div class="theme-toggle">
+    <button id="themeToggle" aria-label="Toggle theme"></button>
+  </div>
+  <main>
+    <h1>Highly Rated Kickstarter Projects</h1>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">S.No.</th>
+          <th scope="col">Percentage Funded</th>
+          <th scope="col">Amount Pledged</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button id="prevBtn" aria-label="Previous Page" disabled>Previous</button>
+      <span id="pageInfo"></span>
+      <button id="nextBtn" aria-label="Next Page">Next</button>
+    </div>
+    <div id="error-section" class="visually-hidden" role="alert"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
